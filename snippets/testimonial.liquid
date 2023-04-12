@@ -1,0 +1,20 @@
+<li class="slide review-card">
+  <img class="review-card_img" src="{{ block.user_image | img_url }}" />
+  <div class="review-card_stars">
+    {%- for i in (1..5) limit: block.stars -%}
+      <div class="review-card_stars_star">{% render "icon-star" %}</div>
+    {%- endfor -%}
+  </div>
+  <h3 class="review-card_title">{{ block.title }}</h3>
+  <p class="review-card_text">{{ block.text }}</p>
+  <h4 class="review-card_name">{{ block.user_name }}</h4>
+  <div class="review-card_product">
+    {% render "image", image: block.product.media[0], class: "review-card_product_img" %}
+    <h5 class="review-card_product_name">
+      {{ block.product.title }}
+      <span class="arrow">
+        {% render "icon-arrow-right" %}
+      </span>
+    </h5>
+  </div>
+</li>

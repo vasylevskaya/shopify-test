@@ -1,0 +1,30 @@
+<div class="product-card">
+  <div
+    class="product-card_img-wrapper"
+    {% if product.metafields.custom.speacial_price.value %}style="background: #FFF9C0"{% endif %}
+  >
+    {% if product.metafields.custom.speacial_price.value %}
+      <p class="product-card_img-wrapper_special-price">
+        <span>{{ product.metafields.custom.speacial_price.value }}</span></br> /day
+      </p>
+    {% endif %}
+    {% render "image", image: product.media[0], class: "product-card_img" %}
+    <div class="product-card_labels">
+      {% for tag in product.tags %}
+        <div class="product-card_label-wrapper">
+          {% case tag %}
+            {% when "brain" %}{% render "icon-brain" %}
+            {% when "energy" %}{% render "icon-energy" %}
+            {% when "heart" %}{% render "icon-heart" %}
+            {% when "stress" %}{% render "icon-stress" %}
+            {% when "mobility" %}{% render "icon-mobility" %}
+            {% when "immunity" %}{% render "icon-immunity" %}
+          {% endcase %}                 
+          <p class="product-card_label-wrapper_title">{{ tag }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <h3 class="product-card_name">{{ product.title }}</h3>
+  <h4 class="product-card_price">{{ product.price | money_with_currency }}</h4>
+</div>
